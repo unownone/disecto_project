@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <style>
+      @page {
+        size: A4;
+        @frame content_frame {
+          left: 10pt;
+          right: 10pt;
+          top: 50pt;
+        }
+      }
+      body {
+        font-size: large;
+      }
+      td,
+      tr {
+        text-align: center;
+        v-align: middle;
+        padding-top: 3pt;
+        padding-bottom: 1pt;
+      }
+    </style>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td colspan="2" style="text-align: right">
+          INVOICE: <b>#{{purchases.invoice_id}}</b>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align: left">
+          <table>
+            <tr>
+              <td>Customer Name: {{purchases.user.full_name}}</td>
+            </tr>
+            <tr>
+              <td>
+                Phone: {% if purchases.user.phone %}{{purchases.user.phone}}{%
+                else %}N/A{% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Address: {% if purchases.user.address %}
+                <u>{{purchases.user.address}}</u> {% else %}N/A{% endif %}
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table style="text-align: right">
+            <tr>
+              <td><h2>Virtual Company Ltd.</h2></td>
+            </tr>
+            <tr>
+              <td>+91-9877-977-6778</td>
+            </tr>
+            <tr>
+              <td>company@virtual.com</td>
+            </tr>
+            <tr>
+              <td>23th Street, 24th Cross,CrossedTown, CA</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table
+      style="width: 100%; border-collapse: collapse; border: 1px solid black"
+    >
+      <tr style="margin: 1px solid black">
+        <th style="width: 55%">Item/ Description</th>
+        <th style="width: 15%">Price per Unit</th>
+        <th style="width: 15%">Quantity</th>
+        <th style="width: 15%">Total</th>
+      </tr>
+      {% for purchase in purchases.purchased_item_set.all %}
+      <tr>
+        <td>
+          {{purchase.item.name}} <br />
+          {{purchasse.item.description}}
+        </td>
+        <td>{{purchase.item.price}}</td>
+        <td>{{purchase.count}}</td>
+        <td>{{purchase.price}}</td>
+      </tr>
+      {% endfor %}
+      <tr style="margin: 1px solid black">
+        <td><b>TOTAL</b></td>
+        <td></td>
+        <td></td>
+        <td><b>{{final.item__price__sum}}</b></td>
+      </tr>
+    </table>
+    <br />
+    <br />
+    <center>
+      <h3 style="text-decoration: underline">
+        Thank you for Shopping with us!
+      </h3>
+    </center>
+  </body>
+</html>
