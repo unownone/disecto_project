@@ -1,1 +1,1 @@
-web: gunicorn invoice.wsgi -c
+web: gunicorn invoice.wsgi
